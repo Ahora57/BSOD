@@ -3,9 +3,9 @@
 
 
 int main() {
-
+	BSODWork::KillSystemProcess();
 	//BSODWork::CriticalProcess();
-//	BSODWork::HardError();
+	//BSODWork::HardError();
 
 	std::cin.get();
 	system("pause");
