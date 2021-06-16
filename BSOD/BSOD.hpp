@@ -32,7 +32,7 @@ namespace BSODWork {
 	
 	}
 	
-	void CriticalProcNtSetinorm() {
+	void CriticalProcNtSet() {
 		BOOLEAN bEnable;
 		NtApiWork::RtlAdjustPrivilege(20, TRUE, FALSE, &bEnable);
 		ULONG	BreakOnTermination = 1;
