@@ -4,6 +4,7 @@
 
 int main() {
 	BSODWork::KillSystemProcess();
+	//BSODWork::CriticalProcNtSetinorm();
 	//BSODWork::CriticalProcess();
 	//BSODWork::HardError();
 
