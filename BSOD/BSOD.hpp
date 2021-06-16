@@ -18,8 +18,8 @@ namespace BSODWork {
 	void CriticalProcess() {
 		BOOLEAN  pbOld= NULL;
 		//https://www.geoffchappell.com/studies/windows/win32/ntdll/api/rtl/peb/setprocessiscritical.htm
-		NtApiWork::RtlSetProcessIsCritical(true,&pbOld, false);
-		NtApiWork::NtTerminateProcess(GetCurrentProcess(), 0x1337);
+		NtApiWork::RtlSetProcessIsCritical(true,&pbOld, false);// Check NtQueryInformationProcess & call NtSetInformationProcess with ProcessBreakOnTermination 
+		NtApiWork::NtTerminateProcess((HANDLE)-1, 0x1337);
 		
 	}
 
@@ -31,7 +31,14 @@ namespace BSODWork {
 		}
 	
 	}
-
+	
+	void CriticalProcNtSetinorm() {
+		BOOLEAN bEnable;
+		NtApiWork::RtlAdjustPrivilege(20, TRUE, FALSE, &bEnable);
+		ULONG	BreakOnTermination = 1;
+		NtApiWork::NtSetInformationProcess((HANDLE)-1, (PROCESS_INFORMATION_CLASS)0x1d, &BreakOnTermination, sizeof(ULONG)); 
+		NtApiWork::NtTerminateProcess((HANDLE)-1, 0x1337);
+	}
 
 
 }
